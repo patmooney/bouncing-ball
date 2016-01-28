@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style type="text/css">
+            #container {
+                position: absolute;
+                top: 150px;
+                left: 500px;
+            }
+		</style>
+        <script type="application/javascript" src="src/bouncing-ball.js"></script>
+	</head>
+	<body>
+        <div id="container" style="margin-top: 50px;"></div>
+		<script type="application/javascript">
+            bouncyBall = new BouncingBall( document.getElementById('container') );
+            bouncyBall.begin();
+		</script>
+	</body>
+</html>
+
