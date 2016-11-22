@@ -7,8 +7,13 @@ module.exports = {
     },
     module: {
         loaders: [
-            { test: path.join(__dirname, 'src'),
-              loader: 'babel-loader' }
+            {
+                test: path.join(__dirname, 'src/'),
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            }
         ]
     }
 };

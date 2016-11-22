@@ -18,7 +18,7 @@ var _defaults = {
     ballRadius: 10,
 };
 
-export default class {
+class BouncingBall {
     constructor ( options={} ) {
         Object.keys(_defaults).forEach( (attr) => {
             this[attr] = options[attr] || _defaults[attr];
@@ -86,3 +86,5 @@ export default class {
         setTimeout( function () { _this.animate( { btop: 20, dir: 1, ball: ballObj, speedFactor: speedFactor } ) }, startTime );
     }
 };
+
+export default BouncingBall;
