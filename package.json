@@ -2,6 +2,7 @@
   "name": "bouncing-ball",
   "description": "Bouncing balls everywhere",
   "author": "Patrick Mooney",
+  "main": "src/bouncing-ball.js",
   "version": "0.0.1",
   "repository": {
     "type": "git",
