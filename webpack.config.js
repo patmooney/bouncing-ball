@@ -1,9 +1,12 @@
 var path = require('path');
 module.exports = {
-    entry: './src/bouncing-ball-entry.js',
+    entry: './src/bouncing-ball.js',
     output: {
         path: __dirname,
-        filename: 'lib/bouncing-ball.js'
+        filename: 'lib/bouncing-ball.js',
+        library: 'BouncingBall',
+        libraryTarget: 'umd',
+        umdNamedDefine: true
     },
     module: {
         loaders: [
