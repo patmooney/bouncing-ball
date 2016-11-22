@@ -12,7 +12,7 @@ A pure JS loading animation
     myBalls.bounce( $('.container') );
 ```
 
-![Example](https://github.com/patmooney/bouncing-ball/master/example.gif)
+![Example](https://github.com/patmooney/bouncing-ball/raw/master/example.gif)
 
 # build
 
