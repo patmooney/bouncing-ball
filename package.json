@@ -1,0 +1,18 @@
+{
+  "name": "bouncing-balls",
+  "description": "Bouncing balls everywhere",
+  "author": "Patrick Mooney",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/patmooney/bouncing-ball.git"
+  },
+  "devDependencies": {
+    "babel-cli": "^6.18.0",
+    "babel-loader": "^6.2.8",
+    "babel-preset-latest": "^6.16.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "webpack": "^1.13.3"
+  }
+}
