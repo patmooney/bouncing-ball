@@ -12,6 +12,8 @@ A pure JS loading animation
     myBalls.bounce( $('.container') );
 ```
 
+![Example](https://github.com/patmooney/bouncing-ball/master/example.gif)
+
 # build
 
     npm install
