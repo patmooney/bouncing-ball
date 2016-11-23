@@ -2,13 +2,14 @@
 /* bouncing-ball.js
     import bouncingBall from 'bouncing-ball';
     var myBalls = new BouncingBall(
+        document.getElementById('container'),
         {
             numberOfBalls: 3,
-            ballColour: "pink",
+            ballColour: "pink", // or an array of colours
             ballRadius: 10
         }
     );
-    myBalls.bounce( document.getElementById('container') );
+    myBalls.bounce();
 
     ...
 
@@ -23,20 +24,44 @@ var _defaults = {
 };
 
 class BouncingBall {
-    constructor ( options={} ) {
+    constructor ( container, options={} ) {
         Object.keys(_defaults).forEach( (attr) => {
             this[attr] = options[attr] || _defaults[attr];
         });
-    }
 
-    /* start a-bouncing */
-    bounce ( container ) {
-        this.stop = false;
         var innerDiv = document.createElement('div');
         innerDiv.style.position = 'relative';
         container.appendChild( innerDiv );
         this.container = innerDiv;
+        this.balls = [];
+    }
 
+    /* start a-bouncing */
+    bounce () {
+        this.stop = false;
+
+        if ( ! this.balls.length ) {
+            this._generateBalls();
+        }
+
+        var _this = this;
+        this.balls.forEach( ( ballObj, i ) => {
+            var speedFactor = (_this.numberOfBalls + 10) - i;
+            setTimeout(
+                function () {
+                    _this.animate({
+                        btop: 20,
+                        dir: 1,
+                        ball: ballObj,
+                        speedFactor: speedFactor
+                    })
+                },
+                0
+            );
+        });
+    }
+
+    _generateBalls () {
         for ( var i = 0; i < this.numberOfBalls; i++ ){
             this.addBall( i );
         }
@@ -60,7 +85,7 @@ class BouncingBall {
 
         // shadow
         var spread = ( Math.round( ( ball.btop / this.maxTop ) * 100 ) / 10 ) - 10;
-        ball.ball.style['box-shadow'] = '0px ' + ( 15 + this.maxTop - ball.btop ) + 'px 5px ' + spread + 'px #888888';
+        ball.ball.style['box-shadow'] = '0px ' + ( 5 + this.maxTop - ball.btop ) + 'px 5px ' + spread + 'px #888888';
 
         // calculate next move
         if ( ball.btop >= this.maxTop ){
@@ -76,10 +101,6 @@ class BouncingBall {
     }
 
     addBall ( i ) {
-        var left = ( 30 + ( i * 15 ) );
-        var startTime = i * 100;
-        var speedFactor = 10 - i;
-
         // use colour and rotate if array
         var colour = this.ballColour;
         if ( Array.isArray( this.ballColour ) ){
@@ -87,19 +108,21 @@ class BouncingBall {
             this.ballColour.push(this.ballColour.shift());
         }
 
+        var css = {
+            borderRadius: "50px",
+            height: this.ballRadius + "px",
+            width: this.ballRadius + "px",
+            backgroundColor: colour,
+            position: "absolute",
+            top: "20px",
+            left: ( 30 + ( i * (this.ballRadius+5) ) ) + "px",
+            boxShaddow: "0px 80px 0px 0px #888888;"
+        };
         var ballObj = document.createElement('div');
-        ballObj.style.borderRadius = "50px";
-        ballObj.style.height = this.ballRadius + "px";
-        ballObj.style.width = this.ballRadius + "px";
-        ballObj.style.backgroundColor = colour;
-        ballObj.style.position = "absolute";
-        ballObj.style.top = "20px";
-        ballObj.style.left = left + "px";
-        ballObj.style.boxShadow = "0px 80px 0px 0px #888888;";
+        Object.keys(css).forEach( (key) => { ballObj.style[key] = css[key] } );
 
+        this.balls.push( ballObj );
         this.container.appendChild(ballObj);
-        var _this = this;
-        setTimeout( function () { _this.animate( { btop: 20, dir: 1, ball: ballObj, speedFactor: speedFactor } ) }, startTime );
     }
 };
 
