@@ -12,7 +12,7 @@
 
     ...
 
-    myBalls.stop();
+    myBalls.unbounce();
 */
 
 var _defaults = {
@@ -29,6 +29,7 @@ class BouncingBall {
         });
     }
 
+    /* start a-bouncing */
     bounce ( container ) {
         this.stop = false;
         var innerDiv = document.createElement('div');
@@ -41,7 +42,8 @@ class BouncingBall {
         }
     }
 
-    stop () {
+    /* aka stop bouncing */
+    unbounce () {
         this.stop = true;
     }
 
