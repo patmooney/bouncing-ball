@@ -9,6 +9,10 @@
         }
     );
     myBalls.bounce( document.getElementById('container') );
+
+    ...
+
+    myBalls.stop();
 */
 
 var _defaults = {
@@ -26,6 +30,7 @@ class BouncingBall {
     }
 
     bounce ( container ) {
+        this.stop = false;
         var innerDiv = document.createElement('div');
         innerDiv.style.position = 'relative';
         container.appendChild( innerDiv );
@@ -36,7 +41,16 @@ class BouncingBall {
         }
     }
 
+    stop () {
+        this.stop = true;
+    }
+
     animate ( ball ) {
+
+        if ( this.stop ) {
+            return;
+        }
+
         // reposition
         ball.btop += ( ( ball.dir * ( ( ( ball.btop - 19 ) / ball.speedFactor  ) || 1 ) ) ) * 3;
         if ( ball.btop > this.maxTop ) { ball.btop = this.maxTop; }
