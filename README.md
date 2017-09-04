@@ -1,22 +1,32 @@
 ### BouncingBall
+
 A pure JS loading animation
 
 ``` javascript
+    
     var myBalls = new BouncingBall(
-        documeent.getElementById('container'),
+        document.getElementById('container'),
         {
-            maxTop: 80, //px
+            maxTop: 80, // max height in px
             numberOfBalls: 3,
-            ballColour: ["pink","green","#00ffee"], // scalar or array of n
-            ballRadius: 10 //px
+            ballColour: ["pink","green","#00ffee"], // scalar or array
+            ballRadius: 10 // px
         }
     );
-    myBalls.bounce();
+    
+    myBalls.bounce(); // start animation
+
+    // ... some time later ...
+
+    myBalls.unbounce(); // stop animation
+
 ```
 
 ![Example](https://github.com/patmooney/bouncing-ball/raw/master/example.gif)
 
-# build
+# Developers
+
+## To build
 
     npm install
     webpack
