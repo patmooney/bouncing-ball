@@ -3,7 +3,7 @@
   "description": "Bouncing balls everywhere",
   "author": "Patrick Mooney",
   "main": "lib/bouncing-ball.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/patmooney/bouncing-ball.git"
