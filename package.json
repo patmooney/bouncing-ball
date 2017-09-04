@@ -3,11 +3,18 @@
   "description": "Bouncing balls everywhere",
   "author": "Patrick Mooney",
   "main": "lib/bouncing-ball.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "repository": {
     "type": "git",
     "url": "https://github.com/patmooney/bouncing-ball.git"
   },
+  "keywords": [
+    "loading",
+    "ajax",
+    "loader",
+    "javascript",
+    "animation"
+  ],
   "devDependencies": {
     "babel-cli": "^6.18.0",
     "babel-loader": "^6.2.8",
