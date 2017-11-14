@@ -14,7 +14,10 @@ module.exports = {
                 test: path.join(__dirname, 'src/'),
                 loader: 'babel-loader',
                 query: {
-                    presets: ['es2015']
+                    presets: ['env'],
+                    plugins: [
+                        "add-module-exports"
+                    ]
                 }
             }
         ]
