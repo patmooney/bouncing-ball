@@ -3,6 +3,8 @@
 A pure JS loading animation
 
 ``` javascript
+
+    var BouncingBall = require('bouncing-ball');
     
     var myBalls = new BouncingBall(
         document.getElementById('container'),
