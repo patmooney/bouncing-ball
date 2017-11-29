@@ -21,6 +21,9 @@ var _defaults = {
     numberOfBalls: 3,
     ballColour: 'black',
     ballRadius: 10,
+    paddingLeft: 30,
+    paddingTop: 20,
+    ballSpacing: 5
 };
 
 class BouncingBall {
@@ -30,7 +33,17 @@ class BouncingBall {
         });
 
         var innerDiv = document.createElement('div');
-        innerDiv.style.position = 'relative';
+        Object.assign(
+            innerDiv.style,
+            {
+                position: 'relative',
+                height: this.paddingTop + this.maxTop + 'px',
+                width: (
+                    (2*this.paddingLeft) +
+                    (this.numberOfBalls * (this.ballRadius+this.ballSpacing))
+                ) + 'px'
+            }
+        );
         container.appendChild( innerDiv );
         this.container = innerDiv;
         this.balls = [];
@@ -50,7 +63,7 @@ class BouncingBall {
             setTimeout(
                 function () {
                     _this.animate({
-                        btop: 20,
+                        btop: _this.paddingTop,
                         dir: 1,
                         ball: ballObj,
                         speedFactor: speedFactor
@@ -91,7 +104,7 @@ class BouncingBall {
         if ( ball.btop >= this.maxTop ){
             ball.dir = -1;
         }
-        else if ( ball.btop <= 20 ){
+        else if ( ball.btop <= this.paddingTop ){
             ball.dir = 1;
         }
 
@@ -114,8 +127,8 @@ class BouncingBall {
             width: this.ballRadius + "px",
             backgroundColor: colour,
             position: "absolute",
-            top: "20px",
-            left: ( 30 + ( i * (this.ballRadius+5) ) ) + "px",
+            top: this.paddingTop+'px',
+            left: ( this.paddingLeft + ( i * (this.ballRadius+this.ballSpacing) ) ) + "px",
             boxShaddow: "0px 80px 0px 0px #888888;"
         };
         var ballObj = document.createElement('div');
